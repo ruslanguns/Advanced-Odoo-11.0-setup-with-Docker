@@ -14,8 +14,7 @@ Te daré una corta guía para que veas lo fácil instalar Odoo desde cero:
 > sudo apt install -y docker.io
 
     sudo groupadd docker
-    sudo usermod docker $USER
-    sudo usermod -a -G docker
+    sudo usermod -a -G docker $USER
     sudo service docker start
 
 ## 2. INSTALAR ODOO MODO BÁSICO
