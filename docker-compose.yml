@@ -1,0 +1,33 @@
+version: '3'
+services:
+  odoo:
+    image: odoo
+    container_name: mi-demo-odoo
+    restart: always
+    ports:
+      - "8070:8069"
+    links:
+      - mi-demo-db
+    environment:
+      - HOST=mi-demo-db
+      - USER=mi-demo
+      - PASSWORD=mi-contraseña
+    volumes:
+      - mi-demo-addons:/mnt/extra-addons
+      - mi-demo-config:/etc/odoo
+      - mi-demo-data:/etc/lib/odoo
+  mi-demo-db:
+    image: postgres:9.4
+    container_name:
+    restart: always
+    environment:
+      - POSTGRES_USER=mi-demo-db
+      - POSTGRES_PASSWORD=mi-contraseña
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - mi-demo-db-data:/var/lib/postgresql/data/pgdata
+volumes:
+    mi-demo-data:
+    mi-demo-addons:
+    mi-demo-config:
+    mi-demo-db-data:
